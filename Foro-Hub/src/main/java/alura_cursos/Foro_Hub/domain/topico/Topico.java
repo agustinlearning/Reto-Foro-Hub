@@ -1,5 +1,6 @@
 package alura_cursos.Foro_Hub.domain.topico;
 
+import alura_cursos.Foro_Hub.domain.model.Estado;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -20,7 +21,7 @@ public class Topico {
     private String titulo;
     private String mensaje;
     private String fechaDeCreacion;
-    private String status;
+    private Estado estado;
     private String autor;
     private String curso;
 
