@@ -1,6 +1,5 @@
 package alura_cursos.Foro_Hub.domain.topico;
 
-import alura_cursos.Foro_Hub.domain.model.Estado;
 import alura_cursos.Foro_Hub.domain.model.curso.Curso;
 import alura_cursos.Foro_Hub.domain.model.usuario.Usuario;
 import jakarta.persistence.*;

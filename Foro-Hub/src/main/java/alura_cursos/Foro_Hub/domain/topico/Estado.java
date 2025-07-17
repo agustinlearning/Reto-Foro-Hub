@@ -1,4 +1,4 @@
-package alura_cursos.Foro_Hub.domain.model;
+package alura_cursos.Foro_Hub.domain.topico;
 
 public enum Estado {
     ABIERTO,
