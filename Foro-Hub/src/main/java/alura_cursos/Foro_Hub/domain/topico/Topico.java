@@ -40,7 +40,7 @@ public class Topico {
     public Topico(String titulo, String mensaje, Usuario autor, Curso curso) {
         this.titulo = titulo;
         this.mensaje = mensaje;
-        this.autor = autor;
+        this.autor = autor; // reutiliza al usuario para tratar el autor cuando publica un topico
         this.curso = curso;
         this.fechaCreacion = LocalDateTime.now();
         this.estado = Estado.ABIERTO;
