@@ -1,11 +1,14 @@
 create table topicos(
-    id bigint not null auto_increment,
-    titulo varchar(100) not null,
-    mensaje varchar(100) not null,
-    fechaCreacion varchar(100) not null,
-    status varchar(100) not null,
-    autor varchar(100) not null,
-    curso varchar(100) not null,
+    id BIGINT NOT NULL AUTO_INCREMENT,
+        titulo VARCHAR(100) NOT NULL UNIQUE,
+        mensaje TEXT NOT NULL UNIQUE,
+        fechaCreacion DATETIME NOT NULL,
+        estado VARCHAR(100) NOT NULL,
+        autor_id BIGINT NOT NULL,
+        curso_id BIGINT NOT NULL,
+        PRIMARY KEY (id),
 
+        CONSTRAINT fk_topicos_autor_id FOREIGN KEY (autor_id) REFERENCES usuarios(id),
+        CONSTRAINT fk_topicos_curso_id FOREIGN KEY (curso_id) REFERENCES cursos(id)
 
 );
