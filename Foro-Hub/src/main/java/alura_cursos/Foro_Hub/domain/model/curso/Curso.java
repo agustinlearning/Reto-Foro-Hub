@@ -26,8 +26,8 @@ public class Curso {
     }
 
         // Constructor simplificado para cuando solo se conoce el nombre
-    public Curso(String nombre) {
-        this.nombre = nombre;
-        this.categoria = "General"; // Categoría por defecto si no se especifica
-    }
+//    public Curso(String nombre) {
+//        this.nombre = nombre;
+//        this.categoria = "General"; // Categoría por defecto si no se especifica
+//    }
 }
