@@ -4,18 +4,15 @@ import alura_cursos.Foro_Hub.domain.model.curso.Curso;
 import alura_cursos.Foro_Hub.domain.model.curso.CursoRepository;
 import alura_cursos.Foro_Hub.domain.model.usuario.Usuario;
 import alura_cursos.Foro_Hub.domain.model.usuario.UsuarioRepository;
-import alura_cursos.Foro_Hub.domain.topico.CrearTopicoDto;
-import alura_cursos.Foro_Hub.domain.topico.DetallesTopicoDto;
-import alura_cursos.Foro_Hub.domain.topico.Topico;
-import alura_cursos.Foro_Hub.domain.topico.TopicoRepository;
+import alura_cursos.Foro_Hub.domain.topico.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -59,6 +56,13 @@ public class TopicoController {
         URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
         // Devuelve una respuesta 201 Created con el DTO de detalles del topico y la URI
         return ResponseEntity.created(uri).body(new DetallesTopicoDto(topico));
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<ListaDeTopicoDto>> listarTopicos(@PageableDefault(size = 10, sort = "fechaCreacion") Pageable paginacion) {
+        Page<ListaDeTopicoDto> topicos = topicoRepository.findAll(paginacion)
+                .map(ListaDeTopicoDto::new);
+        return ResponseEntity.ok(topicos);
     }
 
 }

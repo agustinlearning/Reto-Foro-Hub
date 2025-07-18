@@ -2,8 +2,8 @@ package alura_cursos.Foro_Hub.domain.topico;
 
 import java.time.LocalDateTime;
 
-//Este codigo tiene que devolver un page y retonar los primeros 10 topicos ordernados por fecha de creacion, hacerlo mas tarde
-public record ListaDeTopico(
+//Este codigo podria ser redundante considerando que es igual al de DetallesTopicos, conciderarlo mas tarde
+public record ListaDeTopicoDto(
         Long id,
         String titulo,
         String mensaje,
@@ -12,7 +12,7 @@ public record ListaDeTopico(
         String autorNombre,
         String cursoNombre
 ) {
-    public ListaDeTopico(Topico topico) {
+    public ListaDeTopicoDto(Topico topico) {
         this(
                 topico.getId(),
                 topico.getTitulo(),
