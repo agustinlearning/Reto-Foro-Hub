@@ -65,4 +65,12 @@ public class TopicoController {
         return ResponseEntity.ok(topicos);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DetallesTopicoDto> obtenerTopicoPorId(@PathVariable Long id) {
+        Topico topico = topicoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Tópico no encontrado con ID: " + id));
+        return ResponseEntity.ok(new DetallesTopicoDto(topico));
+    }
+
+
 }
