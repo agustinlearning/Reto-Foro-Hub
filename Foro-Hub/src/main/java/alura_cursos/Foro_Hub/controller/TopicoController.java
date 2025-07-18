@@ -72,6 +72,7 @@ public class TopicoController {
         return ResponseEntity.ok(new DetallesTopicoDto(topico));
     }
 
+    //considerar usar el ispresent() en el futuro
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<DetallesTopicoDto> actualizarTopico(@PathVariable Long id, @RequestBody @Valid ActualizarTopicoDto datos) {
@@ -88,6 +89,7 @@ public class TopicoController {
     public ResponseEntity<Void> eliminarTopico(@PathVariable Long id) {
         Topico topico = topicoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Tópico no encontrado con ID: " + id));
+
         // para eliminacion fisica usar 'topicoRepository.deleteById(id);'
         topico.cerrarTopico();
         return ResponseEntity.noContent().build(); // respuesta 204 No Content
