@@ -72,5 +72,25 @@ public class TopicoController {
         return ResponseEntity.ok(new DetallesTopicoDto(topico));
     }
 
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DetallesTopicoDto> actualizarTopico(@PathVariable Long id, @RequestBody @Valid ActualizarTopicoDto datos) {
+        Topico topico = topicoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Tópico no encontrado con ID: " + id));
+
+        topico.actualizarDatos(datos.titulo(), datos.mensaje(), datos.estado());// Recordar que en una transaction, no es necesario usar el save() porque la entidad ya esta siendo manejada por JPA
+
+        return ResponseEntity.ok(new DetallesTopicoDto(topico));
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Void> eliminarTopico(@PathVariable Long id) {
+        Topico topico = topicoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Tópico no encontrado con ID: " + id));
+        // para eliminacion fisica usar 'topicoRepository.deleteById(id);'
+        topico.cerrarTopico();
+        return ResponseEntity.noContent().build(); // respuesta 204 No Content
+    }
 
 }
