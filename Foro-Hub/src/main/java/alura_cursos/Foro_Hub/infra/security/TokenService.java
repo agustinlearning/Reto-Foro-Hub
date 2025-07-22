@@ -15,7 +15,7 @@ import java.time.ZoneOffset;
 @Service
 public class TokenService {
 
-    @Value("${api.security.secret}")
+    @Value("${api.security.token.secret}")
     private String apiSecret;
 
     public String generarToken(Usuario usuario) {
@@ -32,15 +32,12 @@ public class TokenService {
         }
     }
 
-    // Valida un token JWT y retorna el sujeto (email del usuario)
     public String getSubject(String token) {
         if (token == null) {
             throw new RuntimeException("Token JWT nulo.");
         }
         try {
-            // Define el algoritmo de encriptación con la clave secreta
             Algorithm algorithm = Algorithm.HMAC256(apiSecret);
-            // Verifica el token y retorna el sujeto
             return JWT.require(algorithm)
                     .withIssuer("forohub")
                     .build()
@@ -52,6 +49,6 @@ public class TokenService {
     }
 
     private Instant generarFechaExpiracion() {
-        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-04:00")); // Zona horaria de Santo Domingo
+        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-04:00")); // cambiar dependiendo de la zona horaria
     }
 }
