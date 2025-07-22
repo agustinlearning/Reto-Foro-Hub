@@ -18,7 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.Optional;
 
-@RestController // Marca la clase como un controlador REST
+@RestController
 @RequestMapping("/topicos")
 public class TopicoController {
 
