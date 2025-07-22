@@ -46,7 +46,7 @@ public class Topico {
         this.estado = Estado.ABIERTO;
     }
 
-    public void actualizarDatos(String titulo, String mensaje, Estado estado) { // mas tarde cambbiar por el dto de topicos
+    public void actualizarDatos(String titulo, String mensaje, Estado estado) {
         if (titulo != null && !titulo.isBlank()) {
             this.titulo = titulo;
         }
