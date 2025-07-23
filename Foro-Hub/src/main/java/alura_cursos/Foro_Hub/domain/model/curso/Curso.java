@@ -20,10 +20,10 @@ public class Curso {
     private String nombre;
     private String categoria;
 
-    public Curso(String nombre, String categoria) {
-        this.nombre = nombre;
-        this.categoria = categoria;
-    }
+//    public Curso(String nombre, String categoria) {
+//        this.nombre = nombre;
+//        this.categoria = categoria;
+//    }
 
         // Constructor simplificado para cuando solo se conoce el nombre
     public Curso(String nombre) {
