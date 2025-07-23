@@ -55,7 +55,7 @@ Sigue estos pasos para levantar la aplicación en tu máquina local:
 
 Clonar el Repositorio:
 
-git clone https://github.com/rlipac31/foro-hub.git
+git clone https://github.com/agustinlearning/Reto-Foro-Hub.git
 cd foro-hub
 
 Configuración de la Base de Datos:
